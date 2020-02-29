@@ -11,5 +11,5 @@ tags: jekyll
 > No content
 
 ### 欢迎
-看到有博主用github搭了个人博客，我也试试。
+github搭了个人博客，还挺有意思的。
 
