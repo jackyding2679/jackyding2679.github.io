@@ -14,7 +14,8 @@ tags: 回溯算法 数独
 现在有一个9*9大小的表格，表格中有一些有已知的数据，推理出所有剩余空格的数字，
 并满足每一行、每一列、每一个同色九宫内的数字均含1-9，且不重复。
 
-例如，如下一个9*9的表格，里面已经填了一些数组
+如下一个9*9的表格，里面已经填了一些数组
+```
 0, 0, 5, 3, 0, 0, 0, 0, 0
 8, 0, 0, 0, 0, 0, 0, 2, 0
 0, 7, 0, 0, 1, 0, 5, 0, 0
@@ -24,25 +25,21 @@ tags: 回溯算法 数独
 0, 6, 0, 5, 0, 0, 0, 0, 9
 0, 0, 4, 0, 0, 0, 0, 3, 0
 0, 0, 0, 0, 0, 9, 7, 0, 0
-
+```
 可以使用回溯算法实现，基本思想是，填入一个满足条件的数字，再填入下一列，如果到了一行的末尾
 则切换到下一行，如果某一个位置所有的数子都不满足要求，则回到上一个位置，尝试另外一个数字。
 
 如果想增加难度，可以要求找到所有满足条件的结果。
 
 ### 算法实现（C）
-
-<pre><code class="language-c">
+```
 //Auther:jackyding
 //Date:2020/02/28
 //Description:find soduku
-
 #include<stdio.h>
 #include<stdlib.h>
 #include<unistd.h>
-
 #define SUDU_SIZE 9
-
 int array[SUDU_SIZE][SUDU_SIZE] = {
  {0, 0, 5, 3, 0, 0, 0, 0, 0},
  {8, 0, 0, 0, 0, 0, 0, 2, 0},
@@ -111,6 +108,7 @@ void Sudoku(int row, int column) {
             if (IsOk(row, column, i)) {
                 array[row][column] = i;
                 column++;
+				//切换至下一行
                 if (column == SUDU_SIZE) {
                     row++;
                     column = 0;
@@ -123,6 +121,7 @@ void Sudoku(int row, int column) {
                 }
                 array[row][column] = 0;
                 if (get_result) {
+					//找到其他结果
                     if (row == 0 && column == 0) {
                         get_result = false;
                         printf("search another Soduku\n");
@@ -148,9 +147,10 @@ int main() {
     Sudoku(0,0);
     return 0;
 }
-</code></pre>
+```
 
 ### 输出结果
+```
 [root@node1 backtracking]# ./Sudoku-Problem
 origin data:
 0 0 5 3 0 0 0 0 0
@@ -223,3 +223,4 @@ Yeah!!!find a Soduku
 5 4 2 6 8 9 7 1 3
 -------------------
 search another Soduku
+```
