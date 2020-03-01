@@ -43,3 +43,7 @@ tags: 回溯算法 八皇后问题
 ```css
 p { color:read}
 ```
+
+<pre><code class="language-css">
+p { color: red }
+</code></pre>
