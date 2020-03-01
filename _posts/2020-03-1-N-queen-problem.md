@@ -48,7 +48,7 @@ p { color:read}
 p { color: red }
 </code></pre>
 
-<pre><code class="language-c">
+```clike
 #include <stdio.h>
 main(int argc, char *argv[])
 {
@@ -58,4 +58,4 @@ main(int argc, char *argv[])
       printf("%d. Command line argument passed is %s\n", c+1, argv[c]);
    return 0;
 }
-</code></pre>
+```
