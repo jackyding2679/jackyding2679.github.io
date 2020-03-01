@@ -3,7 +3,7 @@ layout: post
 title: '算法经典-数独问题'
 date: 2020-02-29
 author: Jacky
-categories: 算法
+categories: 经典算法
 cover: 'http://on2171g4d.bkt.clouddn.com/jekyll-banner.png'
 tags: 回溯算法 数独
 ---
