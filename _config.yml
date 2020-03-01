@@ -1,7 +1,7 @@
 # Site settings 配置站点
 title: '老丁的博客'
 description: '分享技术与生活'
-keyword: 'C/C++'
+keyword: '老丁的博客，算法，存储，架构，C/C++'
 url: '' # your host
 
 # when build blog on server, if you don't need baseurl, you should leave this value blank.
@@ -72,9 +72,13 @@ exclude: ['node_modules', 'dev', 'package.json', 'gulpfile.js', '.gitignore', 'R
 
 # Markdown
 markdown: kramdown
-highlighter: rouge
+#highlighter: rougehig
+hlighter: none
+
 kramdown:
   input: GFM
+  syntax_highlighter_opts:
+    disable : true
 
 # RSS
 RSS: false
