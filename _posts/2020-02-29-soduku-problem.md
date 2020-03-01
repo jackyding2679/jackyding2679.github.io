@@ -8,14 +8,14 @@ cover: 'http://on2171g4d.bkt.clouddn.com/jekyll-banner.png'
 tags: 回溯算法 数独
 ---
 
-> No content
+使用回溯算法解决数独问题。
 
-### 提出问题
+###提出问题
 现在有一个9*9大小的表格，表格中有一些有已知的数据，推理出所有剩余空格的数字，
 并满足每一行、每一列、每一个同色九宫内的数字均含1-9，且不重复。
 
-如下一个9*9的表格，里面已经填了一些数组
-```
+如下一个9*9的表格，里面已经填了一些数字：
+```clike
 0, 0, 5, 3, 0, 0, 0, 0, 0
 8, 0, 0, 0, 0, 0, 0, 2, 0
 0, 7, 0, 0, 1, 0, 5, 0, 0
@@ -32,14 +32,19 @@ tags: 回溯算法 数独
 如果想增加难度，可以要求找到所有满足条件的结果。
 
 ### 算法实现（C）
-```
-//Auther:jackyding
-//Date:2020/02/28
-//Description:find soduku
-#include<stdio.h>
-#include<stdlib.h>
-#include<unistd.h>
+```clike
+//需要根据9 * 9盘面上的已知数字，推理出所有剩余空格的数字，
+//并满足每一行、每一列、每一个同色九宫内的数字均含1-9，不重复
+//使用回溯算法实现,找到所有的结果
+//Author: jackyding
+//Date: 2020/02/28
+//Description: find Soduku
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
 #define SUDU_SIZE 9
+
 int array[SUDU_SIZE][SUDU_SIZE] = {
  {0, 0, 5, 3, 0, 0, 0, 0, 0},
  {8, 0, 0, 0, 0, 0, 0, 2, 0},
@@ -108,7 +113,6 @@ void Sudoku(int row, int column) {
             if (IsOk(row, column, i)) {
                 array[row][column] = i;
                 column++;
-				//切换至下一行
                 if (column == SUDU_SIZE) {
                     row++;
                     column = 0;
@@ -121,7 +125,6 @@ void Sudoku(int row, int column) {
                 }
                 array[row][column] = 0;
                 if (get_result) {
-					//找到其他结果
                     if (row == 0 && column == 0) {
                         get_result = false;
                         printf("search another Soduku\n");
@@ -147,10 +150,11 @@ int main() {
     Sudoku(0,0);
     return 0;
 }
+
 ```
 
-### 输出结果
-```
+###输出结果
+```clike
 [root@node1 backtracking]# ./Sudoku-Problem
 origin data:
 0 0 5 3 0 0 0 0 0
