@@ -8,6 +8,7 @@ cover: 'http://on2171g4d.bkt.clouddn.com/jekyll-banner.png'
 tags: 回溯算法 八皇后问题
 ---
 
+>
 
 ### 提出问题
 有个8*8的棋盘，需要在每一行放置一个棋子，
