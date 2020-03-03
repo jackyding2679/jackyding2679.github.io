@@ -13,10 +13,32 @@ tags: 回溯算法 旅行商问题
 ### 提出问题
 一个售货员必须访问n个城市，这n个城市是一个完全图，
 售货员需要恰好访问所有城市的一次，并且回到最终的城市。
-城市于城市之间有一个距离，售货员希望旅行距离最短。
+城市于城市之间有一个距离，售货员希望旅行距离最短。该问题成为旅行商问题（Traveling Salesman Problem,TSP)。
+
+根据图论（Graph)的知识，我们可以将这种多个城市简化为一个图，每个城市是图中的一个顶点（Vetex），
+城市之间的距离可以理解为权（Weight），所有城市之间都可以来往，实际上这就是一个带权无向图（Weighted undirected graph）。
+
+如下图，是一个有4个顶点的无向图：
+![](https://github.com/jackyding2679/jackyding2679.github.io/tree/master/assets/TSP1.jpg)
+
+在顶点很少的时候，很容易通过肉眼看出最短路径，当顶点很多的时候，就需要通过计算机来解决这种问题，
+如果用贪心算法（Greedy）的解决思路，则每一步都选择最优解，但不知道本次的选择如何影响后面的选择，虽然每一步是最优的，
+但总体来说就不一定是最优的。比如，上图中，用贪心的解决思路，则选择的路径是v0->V1->V3->V2->V0，路径长度
+为10，在本例中，这也确实是最短路径，但下面的例子就不是。
+
+稍微改一下上图，改成如下：
+![](https://github.com/jackyding2679/jackyding2679.github.io/tree/master/assets/TSP2.jpg)
+
+此例中，按照贪心的解决思路，则选择的最优解是v0->V1->V3->V2->V0，路径长度为17，并不是最短路径。
+
+所以贪心算法并不能解决该问题。该问题有两种解决思路，即回溯算法（Backtracking）和动态规划（Dynamic Programming）。
+
+先说回溯算法，基本思想是遍历所有是路径，找出最短路径，在遍历的过程中，如果发现当前路径在未遍历完的情况下，
+就已经超过之前算出的最短路径，则直接跳过，这称为剪枝（Pruned），整个遍历过程可以理解成一个递归多叉树（Recursive Multitree）。
+![](https://github.com/jackyding2679/jackyding2679.github.io/tree/master/assets/TSP_tree.jpg)
 
 
-### 算法实现
+### 回溯算法的实现
 ```clike
 //旅行商（Traveling salesman problem, TSP)
 //一个售货员必须访问n个城市，这n个城市是一个完全图，
@@ -29,7 +51,7 @@ tags: 回溯算法 旅行商问题
 #include <stdio.h>
 #include <string.h>
 
-#define GRAPH_SIZE 5//图(graph)顶点(vetex)个数
+#define GRAPH_SIZE 4//图(graph)顶点(vetex)个数
 
 //为了方便，使用二维数组存储整个图，为邻接矩阵（adjacency matrix)
 //顶点的id为0，1，2，3，二维数组的值表示顶尖之间的距离，顶点跟自己的距离
@@ -37,11 +59,10 @@ tags: 回溯算法 旅行商问题
 //DISTANCE(V0,V2) = graph[0][2]
 //DISTANCE(V2,V0) = graph[2][0]
 const int graph[GRAPH_SIZE][GRAPH_SIZE] = {
-    {0, 6, 4, 1, 2},
-    {6, 0, 5, 4, 3},
-    {4, 5, 0, 5, 1},
-    {1, 4, 5, 0, 1},
-    {2, 3, 1, 1, 0}
+    {0, 1, 3, 6},
+    {1, 0, 5, 4},
+    {3, 5, 0, 2},
+    {6, 4, 2, 0}
 };
 
 int min_distance = 0;//存储最小距离
@@ -146,79 +167,13 @@ int main() {
 ### 输出结果
 ```clike
 [root@node1 backtracking]# ./Traveling-Salesman-Problem
-set min_distance to 19
-path is: 1->2->3->4->0
--------------------
 set min_distance to 14
-path is: 1->2->4->3->0
+path is: 1->2->3->0
 -------------------
-d(18) >= min_distance(14)
-path is: 1->3->2->4->0
+set min_distance to 10
+path is: 1->3->2->0
 -------------------
-d(16) >= min_distance(14)
-path is: 1->3->4->2->0
--------------------
-d(16) >= min_distance(14)
-path is: 1->4->2->3->0
--------------------
-d(19) >= min_distance(14)
-path is: 1->4->3->2->0
--------------------
-d(16) >= min_distance(14)
-path is: 2->1->3->4->0
--------------------
-d(14) >= min_distance(14)
-path is: 2->1->4->3->0
--------------------
-d(18) >= min_distance(14)
-path is: 2->3->1->4->0
--------------------
-d(19) >= min_distance(14)
-path is: 2->3->4->1->0
--------------------
-set min_distance to 13
-path is: 2->4->1->3->0
--------------------
-d(16) >= min_distance(13)
-path is: 2->4->3->1->0
--------------------
-d(13) >= min_distance(13)
-path is: 3->1->2->4->0
--------------------
-d(13) >= min_distance(13)
-path is: 3->1->4->2->0
--------------------
-d(16) >= min_distance(13)
-path is: 3->2->1->4->0
--------------------
-d(16) >= min_distance(13)
-path is: 3->2->4->1->0
--------------------
-d(14) >= min_distance(13)
-path is: 3->4->1->2->0
--------------------
-d(14) >= min_distance(13)
-path is: 3->4->2->1->0
--------------------
-d(16) >= min_distance(13)
-path is: 4->1->2->3->0
--------------------
-d(18) >= min_distance(13)
-path is: 4->1->3->2->0
--------------------
-d(13) >= min_distance(13)
-path is: 4->2->1->3->0
--------------------
-d(18) >= min_distance(13)
-path is: 4->2->3->1->0
--------------------
-d(16) >= min_distance(13)
-path is: 4->3->1->2->0
--------------------
-d(19) >= min_distance(13)
-path is: 4->3->2->1->0
--------------------
-min distance is 13
-path is: 2->4->1->3->0
+min distance is 10
+path is: 1->3->2->0
 -------------------
 ```
