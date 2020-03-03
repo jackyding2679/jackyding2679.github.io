@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '算法经典-旅行商问题'
-date: 2020-03-01
+date: 2020-03-03
 author: Jacky
 categories: 经典算法
 cover: 'http://on2171g4d.bkt.clouddn.com/jekyll-banner.png'
@@ -19,7 +19,7 @@ tags: 回溯算法 旅行商问题
 城市之间的距离可以理解为权（Weight），所有城市之间都可以来往，实际上这就是一个带权无向图（Weighted undirected graph）。
 
 如下图，是一个有4个顶点的无向图：
-![](https://github.com/jackyding2679/jackyding2679.github.io/tree/master/assets/TSP1.jpg)
+![](https://github.com/jackyding2679/jackyding2679.github.io/blob/master/assets/img/TSP1.jpg)
 
 在顶点很少的时候，很容易通过肉眼看出最短路径，当顶点很多的时候，就需要通过计算机来解决这种问题，
 如果用贪心算法（Greedy）的解决思路，则每一步都选择最优解，但不知道本次的选择如何影响后面的选择，虽然每一步是最优的，
@@ -27,7 +27,7 @@ tags: 回溯算法 旅行商问题
 为10，在本例中，这也确实是最短路径，但下面的例子就不是。
 
 稍微改一下上图，改成如下：
-![](https://github.com/jackyding2679/jackyding2679.github.io/tree/master/assets/TSP2.jpg)
+![](https://github.com/jackyding2679/jackyding2679.github.io/blob/master/assets/img/TSP2.jpg)
 
 此例中，按照贪心的解决思路，则选择的最优解是v0->V1->V3->V2->V0，路径长度为17，并不是最短路径。
 
@@ -35,7 +35,7 @@ tags: 回溯算法 旅行商问题
 
 先说回溯算法，基本思想是遍历所有是路径，找出最短路径，在遍历的过程中，如果发现当前路径在未遍历完的情况下，
 就已经超过之前算出的最短路径，则直接跳过，这称为剪枝（Pruned），整个遍历过程可以理解成一个递归多叉树（Recursive Multitree）。
-![](https://github.com/jackyding2679/jackyding2679.github.io/tree/master/assets/TSP_tree.jpg)
+![](https://github.com/jackyding2679/jackyding2679.github.io/blob/master/assets/img/TSP_tree.jpg)
 
 
 ### 回溯算法的实现
@@ -45,7 +45,7 @@ tags: 回溯算法 旅行商问题
 //售货员需要恰好访问所有城市的一次，并且回到最终的城市。
 //城市于城市之间有一个旅行费用，售货员希望旅行费用之和最少。
 //Author: jackyding
-//Date: 2020/03/01
+//Date: 2020/03/03
 //Description: solve traveling-salesman-problem
 
 #include <stdio.h>
