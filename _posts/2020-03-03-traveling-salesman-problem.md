@@ -19,7 +19,7 @@ tags: 回溯算法 旅行商问题
 城市之间的距离可以理解为权（Weight），所有城市之间都可以来往，实际上这就是一个带权无向图（Weighted undirected graph）。
 
 如下图，是一个有4个顶点的无向图：
-![](https://github.com/jackyding2679/jackyding2679.github.io/blob/master/assets/img/TSP1.jpg)
+![](/assets/img/TSP1.jpg)
 
 在顶点很少的时候，很容易通过肉眼看出最短路径，当顶点很多的时候，就需要通过计算机来解决这种问题，
 如果用贪心算法（Greedy）的解决思路，则每一步都选择最优解，但不知道本次的选择如何影响后面的选择，虽然每一步是最优的，
