@@ -11,7 +11,8 @@ tags: MinIO 对象存储
 ### 介绍
 MinIO是一款高性能对象存储软件，基于Apache License v2.0协议，其API与AWS S3兼容。
 可以用MinIO为机器学习，大数据分析以及应用负载构造高性能的基础设施。
-github:[1]: https://github.com/minio
+github
+* [https://github.com/minio](https://github.com/minio)
 website:[1]: https://min.io/
 
 ### 安装
