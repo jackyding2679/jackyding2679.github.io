@@ -7,16 +7,18 @@ categories: 存储
 cover: 'http://on2171g4d.bkt.clouddn.com/jekyll-banner.png'
 tags: MinIO 对象存储
 ---
-
+体验MinIO对象存储
 ### 介绍
 MinIO是一款高性能对象存储软件，基于Apache License v2.0协议，其API与AWS S3兼容。
 可以用MinIO为机器学习，大数据分析以及应用负载构造高性能的基础设施。
-github
+github  
 * [https://github.com/minio](https://github.com/minio)
-website:[1]: https://min.io/
+website    
+* [https://min.io/](https://min.io/)
 
 ### 安装
-官网介绍：https://docs.min.io/docs/minio-quickstart-guide.html
+官网介绍：
+* [https://docs.min.io/docs/minio-quickstart-guide.html]([https://docs.min.io/docs/minio-quickstart-guide.html])
 可以支持容器安装，macOS，GNU/linux，Microsoft Windows和FreeBSD。
 安装非常的方便，以linux为例：
 ```clike
@@ -159,9 +161,9 @@ s3://video/2019-09-09-181105120.mp4 (object):
 ```
 
 ### 纠删码（Erasure Coding）
-官网介绍：
-https://min.io/product/overview
-https://docs.minio.io/docs/minio-erasure-code-quickstart-guide.html
+官网介绍:  
+* [https://min.io/product/overview](https://min.io/product/overview)
+* [https://docs.minio.io/docs/minio-erasure-code-quickstart-guide.html](ttps://docs.minio.io/docs/minio-erasure-code-quickstart-guide.html)
 
 MinIO以每个对象的粒度为数据提供保护，使用了Reed-Solomon算法将
 对象拆分成条带，有N/2个数据对象和N/2个校验对象，当然，这些MiniIO
