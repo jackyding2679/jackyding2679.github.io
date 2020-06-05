@@ -7,7 +7,8 @@ categories: 经典算法
 cover: 'http://on2171g4d.bkt.clouddn.com/jekyll-banner.png'
 tags: 回溯算法 动态规划
 ---
-https://testversions-1302272194.cos.ap-guangzhou.myqcloud.com/unnamed.jpg 
+
+'https://testversions-1302272194.cos.ap-guangzhou.myqcloud.com/unnamed.jpg'
 
 ### 提出问题
 假设我们有几种不同币值的硬币 v1，v2，……，vn（单位是元）。
